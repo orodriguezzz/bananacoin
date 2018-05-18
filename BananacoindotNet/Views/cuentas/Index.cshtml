@@ -3,10 +3,10 @@
     ViewBag.Title = "Index";
 }
 
-<h2>CUENTAS</h2>
+<h2>CUENTA</h2>
 
 <div>
-    <table class="table table-striped">
+    <table class="table table-striped table-bordered">
         <tr>
             <td>
                 Dirección
@@ -15,5 +15,33 @@
                 @Model.direccion
             </td>
         </tr>
+        <tr>
+            <td>
+                Saldo
+            </td>
+            <td>
+                @Model.saldo
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div>
+    <table class="table table-striped table-bordered">
+        @foreach (var item in Model.transacciones)
+        {
+            <tr>
+                <td>Monto</td>
+                <td>@item.monto</td>
+            </tr>
+            <tr>
+                <td>Tipo</td>
+                <td>@item.tipoInstruccion</td>
+            </tr>
+            <tr>
+                <td>Fecha registro</td>
+                <td>@item._fechaRegistro</td>
+            </tr>
+        }
     </table>
 </div>

@@ -66,5 +66,27 @@ namespace BananacoindotNet.BL.data
                 return null;
             }
         }
+
+        public static List<BC_TransaccionViewModel> getTransacciones(string direccion)
+        {
+            List<BC_TransaccionViewModel> result = new List<BC_TransaccionViewModel>();
+            try
+            {
+                using (var con = config.GetOpenConnection())
+                {
+                    result = con.Query<BC_TransaccionViewModel>("BC_spBananacoin_get_transaccion",
+                        new { direccion = direccion },
+                        commandType: CommandType.StoredProcedure
+                    ).ToList();
+                    con.Close();
+                }
+                return result;
+            }
+            catch (Exception e)
+            {
+                //Save the logs!
+                return null;
+            }
+        }
     }
 }

@@ -12,6 +12,8 @@ namespace BananacoindotNet.Controllers
         public ActionResult Index(string direccion)
         {
             var model = BananacoindotNet.BL.data.data.getCreateCuenta(direccion);
+            model.transacciones = BananacoindotNet.BL.data.data.getTransacciones(direccion);
+
             return View(model);
         }
     }
