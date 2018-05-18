@@ -47,6 +47,9 @@ namespace BananacoindotNet.BL.data
         /// <returns></returns>
         public static BC_CuentaSaldoViewModel getCreateCuenta(string direccion)
         {
+
+
+
             BC_CuentaSaldoViewModel result = new BC_CuentaSaldoViewModel();
             try
             {

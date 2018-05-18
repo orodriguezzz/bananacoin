@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="business\business.cs" />
     <Compile Include="dapper\config.cs" />
     <Compile Include="data\data.cs" />
     <Compile Include="model\BC_CuentaSaldoViewModel.cs" />
