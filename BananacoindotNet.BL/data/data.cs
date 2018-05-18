@@ -1,4 +1,5 @@
 ﻿using BananacoindotNet.BL.dapper;
+using BananacoindotNet.BL.model;
 using Dapper;
 using System;
 using System.Collections.Generic;
@@ -30,6 +31,34 @@ namespace BananacoindotNet.BL.data
                     con.Close();
                 }
                 return null;
+            }
+            catch (Exception e)
+            {
+                //Save the logs!
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Verifico existencia de cuenta según parámetro dirección y si no existe la creo
+        /// En el caso de que exista retorno los datos asociados
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public static BC_CuentaSaldoViewModel getCreateCuenta(string direccion)
+        {
+            BC_CuentaSaldoViewModel result = new BC_CuentaSaldoViewModel();
+            try
+            {
+                using (var con = config.GetOpenConnection())
+                {
+                    result = con.Query<BC_CuentaSaldoViewModel>("BC_spBananacoin_getcreate_direccion",
+                        new { direccion = direccion },
+                        commandType: CommandType.StoredProcedure
+                    ).FirstOrDefault();
+                    con.Close();
+                }
+                return result;
             }
             catch (Exception e)
             {

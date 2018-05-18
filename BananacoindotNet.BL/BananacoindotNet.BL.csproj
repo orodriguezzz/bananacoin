@@ -46,13 +46,12 @@
   <ItemGroup>
     <Compile Include="dapper\config.cs" />
     <Compile Include="data\data.cs" />
+    <Compile Include="model\BC_CuentaSaldoViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="model\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
