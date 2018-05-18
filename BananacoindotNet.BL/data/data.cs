@@ -67,6 +67,11 @@ namespace BananacoindotNet.BL.data
             }
         }
 
+        /// <summary>
+        /// Obtengo las transacciones de una cuenta
+        /// </summary>
+        /// <param name="direccion"></param>
+        /// <returns></returns>
         public static List<BC_TransaccionViewModel> getTransacciones(string direccion)
         {
             List<BC_TransaccionViewModel> result = new List<BC_TransaccionViewModel>();
@@ -76,6 +81,33 @@ namespace BananacoindotNet.BL.data
                 {
                     result = con.Query<BC_TransaccionViewModel>("BC_spBananacoin_get_transaccion",
                         new { direccion = direccion },
+                        commandType: CommandType.StoredProcedure
+                    ).ToList();
+                    con.Close();
+                }
+                return result;
+            }
+            catch (Exception e)
+            {
+                //Save the logs!
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Obtengo el listado de tipos de transacciones
+        /// </summary>
+        /// <param name="direccion"></param>
+        /// <returns></returns>
+        public static List<BC_tipoInstruccionViewModel> getTipoTransaccion()
+        {
+            List<BC_tipoInstruccionViewModel> result = new List<BC_tipoInstruccionViewModel>();
+            try
+            {
+                using (var con = config.GetOpenConnection())
+                {
+                    result = con.Query<BC_tipoInstruccionViewModel>("BC_spBananacoin_get_tipoInstruccion",
+                        new {  },
                         commandType: CommandType.StoredProcedure
                     ).ToList();
                     con.Close();

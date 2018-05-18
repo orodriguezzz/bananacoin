@@ -79,11 +79,10 @@
                     <div class="form-group">
                         <label for="bc_tipoInstruccion">Tipo instrucción</label>
                         <select class="form-control" id="bc_tipoInstruccion">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
+                            @foreach (var item in Model.tipoTransacciones)
+                            {
+                                <option value="@item.id">@item.tipoInstruccion</option>
+                            }
                         </select>
                     </div>
                 </form>

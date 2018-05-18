@@ -12,6 +12,7 @@ namespace BananacoindotNet.BL.model
         public string direccion { get; set; }
         public int saldo { get; set; }
         public List<BC_TransaccionViewModel> transacciones { get; set; }
+        public List<BC_tipoInstruccionViewModel> tipoTransacciones { get; set; }
     }
 
     public class BC_TransaccionViewModel
@@ -28,5 +29,11 @@ namespace BananacoindotNet.BL.model
                 return string.Format("{0} {1}", fechaRegistro.ToShortDateString(), fechaRegistro.ToShortTimeString());
             }
         }
+    }
+
+    public class BC_tipoInstruccionViewModel
+    {
+        public int id { get; set; }
+        public string tipoInstruccion { get; set; }
     }
 }

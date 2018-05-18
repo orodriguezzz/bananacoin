@@ -11,8 +11,12 @@ namespace BananacoindotNet.Controllers
         // GET: cuentas
         public ActionResult Index(string direccion)
         {
+            //1: busco y/o creo cuenta
             var model = BananacoindotNet.BL.data.data.getCreateCuenta(direccion);
+            //2: busco transacciones
             model.transacciones = BananacoindotNet.BL.data.data.getTransacciones(direccion);
+            //3: obtengo tipo transacciones
+            model.tipoTransacciones = BananacoindotNet.BL.data.data.getTipoTransaccion();
 
             return View(model);
         }
