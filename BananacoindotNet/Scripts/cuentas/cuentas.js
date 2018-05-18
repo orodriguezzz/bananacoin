@@ -1,9 +1,9 @@
 ﻿$(function () {
 
 
-    $(".btn-save-transaccion").click(function () {
+    $("#btn-save-transaccion").click(function () {
 
-        alert();
+        //$.ajax
 
     })
 

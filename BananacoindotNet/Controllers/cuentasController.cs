@@ -10,19 +10,24 @@ namespace BananacoindotNet.Controllers
     public class cuentasController : Controller
     {
         // GET: cuentas
-        public ActionResult Index(string direccion)
+        public ActionResult Index(modelo modelo)
         {
             //if (BananacoindotNet.BL.business.business.validaSHA256(direccion))
             //{
-                //1: busco y/o creo cuenta
-                var model = BananacoindotNet.BL.data.data.getCreateCuenta(direccion);
-                //2: busco transacciones
-                model.transacciones = BananacoindotNet.BL.data.data.getTransacciones(direccion);
-                //3: obtengo tipo transacciones
-                model.tipoTransacciones = BananacoindotNet.BL.data.data.getTipoTransaccion();
+            //1: busco y/o creo cuenta
+            var model = BananacoindotNet.BL.data.data.getCreateCuenta(modelo.direccion);
+            //2: busco transacciones
+            model.transacciones = BananacoindotNet.BL.data.data.getTransacciones(modelo.direccion);
+            //3: obtengo tipo transacciones
+            model.tipoTransacciones = BananacoindotNet.BL.data.data.getTipoTransaccion();
             //}
 
             return View(new BC_CuentaSaldoViewModel());
+        }
+
+        public class modelo
+        {
+            public string direccion { get; set; }
         }
     }
 }
